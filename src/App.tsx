@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 import Navbar from './components/Navbar';
-import ProductList from './components/ProductList';
-import Cart from './components/Cart';
 import { useProducts } from './store/hooks';
+
+const ProductList = lazy(() => import('./components/ProductList'));
+const Cart = lazy(() => import('./components/Cart'));
 
 // Inner component with hooks
 const AppContent: React.FC = () => {
@@ -33,10 +34,14 @@ const AppContent: React.FC = () => {
       <Navbar />
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8">
         <div className="lg:col-span-2">
-          <ProductList />
+          <Suspense fallback={<div>Loading...</div>}>
+            <ProductList />
+          </Suspense>
         </div>
         <div className="lg:col-span-1">
-          <Cart />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Cart />
+          </Suspense>
         </div>
       </div>
     </div>

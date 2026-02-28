@@ -6,6 +6,7 @@ import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux';
 import cartReducer from './slices/cartSlice';
 import productsReducer, { fetchProductById, fetchProducts } from './slices/productsSlice';
 import userReducer from './slices/userSlice';
+import { loggerMiddleware } from './middleware/logger';
 
 const persistConfig = {
   key: 'root',
@@ -23,6 +24,11 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,
+  devTools: {
+    name: 'ShopSmart',
+    trace: true,
+    traceLimit: 25,
+  },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
@@ -35,7 +41,7 @@ export const store = configureStore({
         ignoredPaths: ['products.items'],
         warnAfter: 128,
       },
-    }),
+    }).concat(loggerMiddleware),
 });
 
 export const persistor = persistStore(store);
