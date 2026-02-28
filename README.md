@@ -27,3 +27,43 @@ A comprehensive e-commerce shopping cart application built to demonstrate Redux 
 - Lucide React Icons
 
 ## 🏗️ Project Structure
+src/
+├── components/ # React components
+├── store/
+│ ├── slices/ # Redux slices
+│ ├── hooks.ts # Custom hooks
+│ ├── index.ts # Store config
+│ └── middleware/ # Custom middleware
+├── types/ # TypeScript types
+└── App.tsx # Main component
+
+text
+
+## 🎯 Learning Path
+
+1. **Phase 1**: Basic Redux Concepts
+2. **Phase 2**: Redux with React
+3. **Phase 3**: Redux Toolkit
+4. **Phase 4**: Async Operations
+5. **Phase 5**: Advanced Patterns
+6. **Phase 6**: Testing
+7. **Phase 7**: Deployment
+
+## 🚦 Getting Started
+
+```bash
+# Clone repository
+git clone https://github.com/Abfoll/Redux-e-commerce-shopping-cart
+
+# Install dependencies
+cd shop-smart
+npm install
+
+# Start development server
+npm start
+
+# Run tests
+npm test
+
+# Build for production
+npm run build
